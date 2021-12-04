@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.main`
-  background-color: #06092b;
+  background-color: ${({ theme }) => theme.quina};
   color: #fff;
   width: 100%;
   height: 100%;
