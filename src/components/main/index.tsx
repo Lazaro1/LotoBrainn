@@ -3,6 +3,10 @@ import Select from 'react-select'
 import { useEffect, useState } from 'react'
 import api from 'services/api'
 
+interface Props {
+  toggleTheme(): void
+}
+
 const options = [
   { value: 'MEGA-SENA', label: 'MEGA-SENA' },
   { value: 'QUINA', label: 'QUINA' },
@@ -12,7 +16,7 @@ const options = [
   { value: 'DIA DE SORTE', label: 'DIA DE SORTE' }
 ]
 
-const Main: React.FC = () => {
+const Main: React.FC<Props> = ({ toggleTheme }) => {
   const [tittle, setTittle] = useState('MEGA-SENA')
 
   useEffect(() => {
@@ -33,7 +37,7 @@ const Main: React.FC = () => {
       <S.containerOptions>
         <Select
           options={options}
-          onChange={(e) => handleLoto(e)}
+          onChange={toggleTheme}
           placeholder="MEGA-SENA"
         />
 
