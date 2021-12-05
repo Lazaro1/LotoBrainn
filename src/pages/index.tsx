@@ -8,7 +8,9 @@ export default function Home() {
     loto: '#DD7AC6',
     lotoMania: '#FFAB64',
     timeMania: '#5AAD7D',
-    sorte: '#BFAF83'
+    sorte: '#BFAF83',
+    grey: '#EFEFEF',
+    green: '#6BEFA3'
   }
 
   return (
