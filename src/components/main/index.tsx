@@ -2,9 +2,12 @@ import * as S from './styles'
 import Select from 'react-select'
 
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
+  { value: 'MEGA-SENA', label: 'MEGA-SENA' },
+  { value: 'QUINA', label: 'QUINA' },
+  { value: 'LOTOFACIL', label: 'LOTOFACIL' },
+  { value: 'LOTOMANIA', label: 'LOTOMANIA' },
+  { value: 'TIMEMANIA', label: 'TIMEMANIA' },
+  { value: 'DIA DE SORTE', label: 'DIA DE SORTE' }
 ]
 
 const handleLoto = (values: any) => {
@@ -14,11 +17,15 @@ const handleLoto = (values: any) => {
 const Main = () => (
   <S.Wrapper>
     <S.containerOptions>
-      <Select options={options} onChange={(e) => handleLoto(e)} />
+      <Select
+        options={options}
+        onChange={(e) => handleLoto(e)}
+        placeholder="MEGA-SENA"
+      />
 
       <S.containerLogo>
         <S.Logo src="/img/Logo_Sena.svg" alt="Logo Grab e texto Grab" />
-        <S.Logo src="/img/MEGA-SENA.svg" alt="Logo Grab e texto Grab" />
+        <S.LogoTittle>MEGA-SENA</S.LogoTittle>
       </S.containerLogo>
       <S.Label>Concurso N° 4560</S.Label>
     </S.containerOptions>
