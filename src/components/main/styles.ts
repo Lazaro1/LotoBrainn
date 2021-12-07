@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.main`
   background-color: ${({ theme }) => theme.primary};
+  transition: background-color 0.6s linear;
+
   width: 100%;
   height: 100%;
   text-align: center;
@@ -24,6 +26,7 @@ export const containerOptions = styled.div`
   justify-content: space-around;
 
   background-color: ${({ theme }) => theme.primary};
+  transition: background-color 0.6s linear;
 
   @media (min-width: 500px) {
     height: 100%;
