@@ -72,11 +72,13 @@ export const containerResult = styled.div`
   align-items: center;
   flex-wrap: wrap;
   padding: 75px 0 30px 0;
+
   @media (min-width: 500px) {
     height: 100%;
     width: 70%;
     clip-path: circle(69.6% at 70% 50%);
     align-items: flex-end;
+    padding: 0px 150px 0px 150px;
   }
 `
 
@@ -91,7 +93,7 @@ export const resultNumber = styled.div`
   height: 76px;
   width: 76px;
   border-radius: 50%;
-  margin: 10px;
+  margin: 20px;
 
   background-color: white;
   color: black;
