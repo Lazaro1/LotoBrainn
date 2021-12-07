@@ -5,20 +5,20 @@ export const Wrapper = styled.main`
   transition: background-color 0.6s linear;
 
   width: 100%;
-  height: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   @media (min-width: 500px) {
     flex-direction: row;
+    height: 100%;
   }
 `
 
 export const containerOptions = styled.div`
   width: 100%;
-  height: 45%;
+  height: 300px;
+  margin-bottom: 78px;
 
   display: flex;
   flex-direction: column;
@@ -63,18 +63,23 @@ export const Label = styled.label`
   color: white;
 `
 
+export const RoundedDiv = styled.div`
+  width: 100%;
+  height: 239px;
+  margin-top: -238px;
+  background-color: ${({ theme }) => theme.grey};
+  clip-path: ellipse(50% 40% at 50% 100%);
+`
+
 export const containerResult = styled.div`
   width: 100%;
-  height: 55%;
-
-  clip-path: circle(90% at 50% 95%);
   background-color: ${({ theme }) => theme.grey};
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 75px 0 30px 0;
+  padding: 0 0 30px 0;
 
   @media (min-width: 500px) {
     height: 100%;
@@ -86,6 +91,8 @@ export const containerResult = styled.div`
 `
 
 export const resultWrapper = styled.div`
+  margin-top: -68px;
+  z-index: 99;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

@@ -105,6 +105,7 @@ const Main: React.FC = () => {
           <S.Label>Concurso N° {dataConcurso?.id}</S.Label>
         </S.containerOptions>
         <S.containerResult>
+          <S.RoundedDiv />
           <S.resultWrapper>
             {dataConcurso?.numeros.map((numbers: string, i: number) => (
               <S.resultNumber key={i}>
