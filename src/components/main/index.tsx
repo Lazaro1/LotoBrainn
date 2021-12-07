@@ -27,36 +27,63 @@ interface LotoTypes {
   label: string
 }
 
+interface Concursos {
+  loteriaId: number
+  concursoId: string
+}
+
+interface dataConcursos {
+  data: Date
+  id: string
+  loteria: number
+  numeros: any
+}
+
 const Main: React.FC = () => {
   const [tittle, setTittle] = useState('MEGA-SENA')
+  const [concursos, setConcursos] = useState<Concursos>()
+  const [dataConcurso, setDataConcurso] = useState<dataConcursos>()
   const [theme, setTheme] = useState(greenTheme)
 
   useEffect(() => {
-    getDataLoto()
+    getDataConcurso()
+    getDataLoto(2359)
   }, [])
 
-  const getDataLoto = async () => {
-    const result = await api.get('/loterias')
-    console.log(result)
+  const getDataLoto = async (id: any) => {
+    const result = await api.get(`/concursos/${id}`)
+    console.log(result.data, 'result')
+    setDataConcurso(result.data)
+  }
+
+  const getDataConcurso = async () => {
+    const result = await api.get(`/loterias-concursos`)
+    setConcursos(result.data)
   }
 
   const handleLoto = (data: LotoTypes) => {
     if (Number(data.value) === 1) {
+      getDataLoto(concursos[0].concursoId)
       setTheme(greenTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 2) {
+      getDataLoto(concursos[1].concursoId)
       setTheme(blueTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 3) {
+      getDataLoto(concursos[2].concursoId)
       setTheme(pinkTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 4) {
+      getDataLoto(concursos[3].concursoId)
       setTheme(orangeTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 5) {
+      getDataLoto(concursos[4].concursoId)
       setTheme(darkGreenTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 6) {
+      getDataLoto(concursos[5].concursoId)
       setTheme(yellowTheme)
       setTittle(data.label)
     }
@@ -71,33 +98,19 @@ const Main: React.FC = () => {
             onChange={(e) => handleLoto(e)}
             placeholder="MEGA-SENA"
           />
-
           <S.containerLogo>
             <S.Logo src="/img/Logo_Sena.svg" alt="Logo Grab e texto Grab" />
             <S.LogoTittle>{tittle}</S.LogoTittle>
           </S.containerLogo>
-          <S.Label>Concurso N° 4560</S.Label>
+          <S.Label>Concurso N° {dataConcurso?.id}</S.Label>
         </S.containerOptions>
         <S.containerResult>
           <S.resultWrapper>
-            <S.resultNumber>
-              <S.labelNumber>50</S.labelNumber>
-            </S.resultNumber>
-            <S.resultNumber>
-              <S.labelNumber>50</S.labelNumber>
-            </S.resultNumber>
-            <S.resultNumber>
-              <S.labelNumber>50</S.labelNumber>
-            </S.resultNumber>
-            <S.resultNumber>
-              <S.labelNumber>50</S.labelNumber>
-            </S.resultNumber>
-            <S.resultNumber>
-              <S.labelNumber>50</S.labelNumber>
-            </S.resultNumber>
-            <S.resultNumber>
-              <S.labelNumber>50</S.labelNumber>
-            </S.resultNumber>
+            {dataConcurso?.numeros.map((numbers: string, i: number) => (
+              <S.resultNumber key={i}>
+                <S.labelNumber>{numbers}</S.labelNumber>
+              </S.resultNumber>
+            ))}
           </S.resultWrapper>
           <S.containerInfo>
             <S.labelInfo>
