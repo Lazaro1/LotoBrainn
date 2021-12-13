@@ -63,27 +63,28 @@ const Main: React.FC = () => {
 
   const handleLoto = (data: LotoTypes) => {
     if (Number(data.value) === 1) {
-      getDataLoto(concursos[0].concursoId)
+      console.log(concursos[3].concursoId!)
+      getDataLoto(concursos[0].concursoId!)
       setTheme(greenTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 2) {
-      getDataLoto(concursos[1].concursoId)
+      getDataLoto(concursos[1].concursoId!)
       setTheme(blueTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 3) {
-      getDataLoto(concursos[2].concursoId)
+      getDataLoto(concursos[2].concursoId!)
       setTheme(pinkTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 4) {
-      getDataLoto(concursos[3].concursoId)
+      getDataLoto(concursos[3].concursoId!)
       setTheme(orangeTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 5) {
-      getDataLoto(concursos[4].concursoId)
+      getDataLoto(concursos[4].concursoId!)
       setTheme(darkGreenTheme)
       setTittle(data.label)
     } else if (Number(data.value) === 6) {
-      getDataLoto(concursos[5].concursoId)
+      getDataLoto(concursos[5].concursoId!)
       setTheme(yellowTheme)
       setTittle(data.label)
     }
