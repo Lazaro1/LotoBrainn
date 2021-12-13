@@ -22,16 +22,6 @@ const options = [
   { value: '6', label: 'DIA DE SORTE' }
 ]
 
-interface LotoTypes {
-  value: number
-  label: string
-}
-
-interface Concursos {
-  loteriaId: number
-  concursoId: string
-}
-
 interface dataConcursos {
   data: Date
   id: string
@@ -60,7 +50,7 @@ const Main: React.FC = () => {
     setConcursos(result.data)
   }
 
-  const handleLoto = (data: LotoTypes) => {
+  const handleLoto = (data: any) => {
     if (Number(data.value) === 1) {
       getDataLoto(concursos[0].concursoId!)
       setTheme(greenTheme)
