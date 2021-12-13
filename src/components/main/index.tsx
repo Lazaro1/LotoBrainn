@@ -52,7 +52,6 @@ const Main: React.FC = () => {
 
   const getDataLoto = async (id: any) => {
     const result = await api.get(`/concursos/${id}`)
-    console.log(result.data, 'result')
     setDataConcurso(result.data)
   }
 
@@ -63,7 +62,6 @@ const Main: React.FC = () => {
 
   const handleLoto = (data: LotoTypes) => {
     if (Number(data.value) === 1) {
-      console.log(concursos[3].concursoId!)
       getDataLoto(concursos[0].concursoId!)
       setTheme(greenTheme)
       setTittle(data.label)
