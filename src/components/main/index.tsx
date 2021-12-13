@@ -41,7 +41,7 @@ interface dataConcursos {
 
 const Main: React.FC = () => {
   const [tittle, setTittle] = useState('MEGA-SENA')
-  const [concursos, setConcursos] = useState<Concursos>()
+  const [concursos, setConcursos] = useState<any>()
   const [dataConcurso, setDataConcurso] = useState<dataConcursos>()
   const [theme, setTheme] = useState(greenTheme)
 
