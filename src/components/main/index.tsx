@@ -1,79 +1,81 @@
 import * as S from './styles'
 import Select from 'react-select'
-import { ThemeProvider, useTheme } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import {
   blueTheme,
   greenTheme,
   darkGreenTheme,
   pinkTheme,
   yellowTheme,
-  orangeTheme
+  orangeTheme,
+  redTheme,
+  purppleTheme,
+  greyTheme
 } from 'styles/theme'
 
 import { useEffect, useState } from 'react'
 import api from 'services/api'
 
-const options = [
-  { value: '1', label: 'MEGA-SENA' },
-  { value: '2', label: 'QUINA' },
-  { value: '3', label: 'LOTOFACIL' },
-  { value: '4', label: 'LOTOMANIA' },
-  { value: '5', label: 'TIMEMANIA' },
-  { value: '6', label: 'DIA DE SORTE' }
-]
-
-interface dataConcursos {
-  data: Date
-  id: string
-  loteria: number
-  numeros: any
-}
-
 const Main: React.FC = () => {
   const [tittle, setTittle] = useState('MEGA-SENA')
-  const [concursos, setConcursos] = useState<any>()
-  const [dataConcurso, setDataConcurso] = useState<dataConcursos>()
+  const [options, setOptions] = useState()
+  const [dataConcurso, setDataConcurso] = useState<any>()
   const [theme, setTheme] = useState(greenTheme)
 
   useEffect(() => {
     getDataConcurso()
-    getDataLoto(2359)
+    getDataLoto('mega-sena')
   }, [])
 
-  const getDataLoto = async (id: any) => {
-    const result = await api.get(`/concursos/${id}`)
-    setDataConcurso(result.data)
+  const getDataLoto = async (label: string) => {
+    const { data } = await api.get(`/api/${label}/latest`)
+    setDataConcurso(data)
   }
 
   const getDataConcurso = async () => {
-    const result = await api.get(`/loterias-concursos`)
-    setConcursos(result.data)
+    const { data } = await api.get('/api')
+    const options = data.map((data: any, i: any) => {
+      return { value: i, label: data.toUpperCase() }
+    })
+    setOptions(options)
   }
 
   const handleLoto = (data: any) => {
-    if (Number(data.value) === 1) {
-      getDataLoto(concursos[0].concursoId!)
+    if (Number(data.value) === 0) {
+      getDataLoto(data.label.toLowerCase())
       setTheme(greenTheme)
       setTittle(data.label)
-    } else if (Number(data.value) === 2) {
-      getDataLoto(concursos[1].concursoId!)
+    } else if (Number(data.value) === 1) {
+      getDataLoto(data.label.toLowerCase())
       setTheme(blueTheme)
       setTittle(data.label)
-    } else if (Number(data.value) === 3) {
-      getDataLoto(concursos[2].concursoId!)
+    } else if (Number(data.value) === 2) {
+      getDataLoto(data.label.toLowerCase())
       setTheme(pinkTheme)
       setTittle(data.label)
-    } else if (Number(data.value) === 4) {
-      getDataLoto(concursos[3].concursoId!)
+    } else if (Number(data.value) === 3) {
+      getDataLoto(data.label.toLowerCase())
       setTheme(orangeTheme)
       setTittle(data.label)
-    } else if (Number(data.value) === 5) {
-      getDataLoto(concursos[4].concursoId!)
+    } else if (Number(data.value) === 4) {
+      getDataLoto(data.label.toLowerCase())
       setTheme(darkGreenTheme)
       setTittle(data.label)
-    } else if (Number(data.value) === 6) {
-      getDataLoto(concursos[5].concursoId!)
+    } else if (Number(data.value) === 5) {
+      getDataLoto(data.label.toLowerCase())
       setTheme(yellowTheme)
+      setTittle(data.label)
+    } else if (Number(data.value) === 6) {
+      getDataLoto(data.label.toLowerCase())
+      setTheme(redTheme)
+      setTittle(data.label)
+    } else if (Number(data.value) === 7) {
+      getDataLoto(data.label.toLowerCase())
+      setTheme(purppleTheme)
+      setTittle(data.label)
+    } else if (Number(data.value) === 8) {
+      getDataLoto(data.label.toLowerCase())
+      setTheme(greyTheme)
       setTittle(data.label)
     }
   }
@@ -91,12 +93,12 @@ const Main: React.FC = () => {
             <S.Logo src="/img/Logo_Sena.svg" alt="Logo Grab e texto Grab" />
             <S.LogoTittle>{tittle}</S.LogoTittle>
           </S.containerLogo>
-          <S.Label>Concurso N° {dataConcurso?.id}</S.Label>
+          <S.Label>Concurso N° {dataConcurso?.concurso}</S.Label>
         </S.containerOptions>
         <S.containerResult>
           <S.RoundedDiv />
           <S.resultWrapper>
-            {dataConcurso?.numeros.map((numbers: string, i: number) => (
+            {dataConcurso?.dezenas.map((numbers: string, i: number) => (
               <S.resultNumber key={i}>
                 <S.labelNumber>{numbers}</S.labelNumber>
               </S.resultNumber>

@@ -26,3 +26,18 @@ export const yellowTheme = {
   primary: '#BFAF83',
   grey: '#EFEFEF'
 }
+
+export const redTheme = {
+  primary: '#a30000',
+  grey: '#EFEFEF'
+}
+
+export const purppleTheme = {
+  primary: '#8c628c',
+  grey: '#EFEFEF'
+}
+
+export const greyTheme = {
+  primary: '#363636',
+  grey: '#EFEFEF'
+}
